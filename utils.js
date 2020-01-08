@@ -10,6 +10,14 @@ function saveData(data, file) {
   fs.writeFileSync(__dirname + "/" + file + ".json", JSON.stringify(data, null, "\t"));
 }
 
+function occurences(arr, search) {
+  var obj = {};
+  for (var i = 0, j = arr.length; i < j; i++) {
+     obj[arr[i]] = (obj[arr[i]] || 0) + 1;
+  }
+  return obj[search] || 0;
+}
+
 function charSplit(string, charmax, charbreak) {
   string = string.split(charbreak);
   let starr = [""];
