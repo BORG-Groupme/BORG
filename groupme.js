@@ -37,7 +37,7 @@ function getGroup(group, token) {
     for (let i = 0; i < groups.length; i++) {
       if(group.test(groups[i].name)) out += groups[i].name + ": " + groups[i].group_id + "\n";
     }
-    sendMessage(out);
+    //return "out" when i get around to making these promises
   });
 }
 function mentionEveryone(message, gid, token) {
