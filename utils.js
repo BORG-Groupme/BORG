@@ -1,5 +1,5 @@
 //misc helper functions
-var fs = require("fs");
+let fs = require("fs");
 
 function getData(callback, file) {
   fs.readFile(__dirname + "/" + file + ".json", function(err, d) {
@@ -12,8 +12,8 @@ function saveData(data, file) {
 
 function charSplit(string, charmax, charbreak) {
   string = string.split(charbreak);
-  var starr = [""];
-  var stin = 0;
+  let starr = [""];
+  let stin = 0;
   while (string.length > 0) {
     if (starr[stin].length + string[0].length + charbreak.length > charmax) {
       stin++;
@@ -25,7 +25,7 @@ function charSplit(string, charmax, charbreak) {
   return starr;
 }
 function shuffle(array) {
-  var m = array.length,
+  let m = array.length,
     t,
     i;
   while (m) {
@@ -34,8 +34,8 @@ function shuffle(array) {
     array[m] = array[i];
     array[i] = t;
   }
-  var a = [];
-  for (var i = 0; i < array.length; i++) {
+  let a = [];
+  for (let i = 0; i < array.length; i++) {
     a[i] = array[i];
   }
   return a;
