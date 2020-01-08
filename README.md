@@ -94,4 +94,4 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
 * [ ] Task scheduler (#13 #14)
   * Sends messages and alerts triggered by a time event (timer or date)
 
-[2]: /issues/23 "#2"
+[2]: https://github.com/BORG-Groupme/BORG/issues/2 "\#2"
