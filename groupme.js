@@ -1,13 +1,13 @@
 //api wrapper for groupme's bullshit
-var request = require("request");
-var utils = require("./utils.js");
+let request = require("request");
+let utils = require("./utils.js");
 
 function generateGUID(chars) {
   return Math.floor(Math.random() * Math.pow(10, chars)) + "";
 }
 
 function getMember(group, member, token) {
-  var optns = {
+  let optns = {
     url:
       "https://api.groupme.com/v3/groups/" +
       group +
@@ -25,7 +25,7 @@ function getMember(group, member, token) {
   });
 }
 function getGroup(group, token) {
-  var optns = {
+  let optns = {
     url:
       "https://api.groupme.com/v3/groups?omit=memberships&per_page=100&token=" +
       token,
@@ -41,7 +41,7 @@ function getGroup(group, token) {
   });
 }
 function mentionEveryone(message, gid, token) {
-  var optns = {
+  let optns = {
     url:
       "https://api.groupme.com/v3/groups/" +
       gid +
@@ -61,7 +61,7 @@ function mentionEveryone(message, gid, token) {
   });
 }
 function sendImage(url, gid, token) {
-  var options = {
+  let options = {
     url:
       "https://api.groupme.com/v3/groups/" +
       gid +
@@ -87,11 +87,11 @@ function sendImage(url, gid, token) {
   });
 }
 function sendPoll(name, selections, time, gid, token) {
-  var poptions = [];
-  for (var i = 0; i < selections.length; i++) {
+  let poptions = [];
+  for (let i = 0; i < selections.length; i++) {
     poptions[i] = { id: i + 1 + "", title: selections[i] };
   }
-  var poptns = {
+  let poptns = {
     url:
       "https://api.groupme.com/v3/poll/" + gid + "?token=" + token,
     method: "POST",
@@ -110,10 +110,10 @@ function sendPoll(name, selections, time, gid, token) {
 function sendMessage(message, gid, token) {
   if (message.length > 1000) {
     message = utils.charSplit(message, 1000, "\n");
-    for (var i = 0; i < message.length; i++) {
+    for (let i = 0; i < message.length; i++) {
       setTimeout(
         function(str) {
-          var options = {
+          let options = {
             url:
               "https://api.groupme.com/v3/groups/" +
               gid +
@@ -138,7 +138,7 @@ function sendMessage(message, gid, token) {
       );
     }
   } else {
-    var options = {
+    let options = {
       url:
         "https://api.groupme.com/v3/groups/" +
         gid +
@@ -162,10 +162,10 @@ function sendMessage(message, gid, token) {
 function sendMention(message, uids, locations, gid, token) {
   if (message.length > 1000) {
     message = utils.charSplit(message, 1000, "\n");
-    for (var i = 0; i < message.length; i++) {
+    for (let i = 0; i < message.length; i++) {
       setTimeout(
         function(str) {
-          var options = {
+          let options = {
             url:
               "https://api.groupme.com/v3/groups/" +
               gid +
@@ -193,7 +193,7 @@ function sendMention(message, uids, locations, gid, token) {
       );
     }
   } else {
-    var options = {
+    let options = {
       url:
         "https://api.groupme.com/v3/groups/" +
         gid +
@@ -219,10 +219,10 @@ function sendDM(message, uid, token) {
   if (message.length > 1000) {
     message = utils.charSplit(message, 1000, "\n");
     console.log(message);
-    for (var i = 0; i < message.length; i++) {
+    for (let i = 0; i < message.length; i++) {
       setTimeout(
         function(str) {
-          var options = {
+          let options = {
             url:
               "https://api.groupme.com/v3/direct_messages?token=" +
               token,
@@ -246,7 +246,7 @@ function sendDM(message, uid, token) {
       );
     }
   } else {
-    var options = {
+    let options = {
       url:
         "https://api.groupme.com/v3/direct_messages?token=" + process.env.TOKEN,
       method: "POST",
