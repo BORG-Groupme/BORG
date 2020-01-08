@@ -3,7 +3,7 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
 
 # GORT Features Reimplemented
 
-* [ ] User permissions/roles (#2 #18)
+* [ ] User permissions/roles ([2] #18)
   * Allows users to have different permission levels.
   * GORT only has regular user, trusted user, admin, and co-owner with preset permissions
   * BORG allows for a fully modular permission system and custom roles
@@ -93,3 +93,5 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
   * Custom replies for a certain trigger
 * [ ] Task scheduler (#13 #14)
   * Sends messages and alerts triggered by a time event (timer or date)
+
+[2]: /issues/23 "#2"
