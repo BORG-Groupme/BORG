@@ -58,27 +58,6 @@ function checkPoll(pid, callback, gid, token) {
 }
 
 /**
- * Removes a user from a group
- * @param {string} id - The global userid of the user being removed
- * @param {function} callback - The handler once the user is removed
- * @param {string} gid - The group from which the user is to be removed
- * @param {string} token - The token of the specific instance of BORG used to generate the request
- */
-function kick(id, callback, gid, token) {
-	getMID(id, (mid) => {
-		const options = {
-			url: 'https://api.groupme.com/v3/groups/' + gid + '/members/' + id + '/remove?token=' + token,
-			method: 'POST',
-			json: true,
-			body: {}
-		};
-		request(options, function(err, resp, body) {
-			callback();
-		});
-	}, gid, token);
-}
-
-/**
  * Searches a group for a member or members
  * @param {RegExp} member - The search to use to find the member
  * @param {function} callback - The handler once the members are found
@@ -147,7 +126,7 @@ function mentionEveryone(message, gid, token) {
 			ids[i] = mem[i].user_id;
 			loci[i] = [0, text.length];
 		}
-		sendMention(text, ids, loci);
+		sendMention(text, ids, loci, gid, token);
 	});
 }
 
@@ -235,10 +214,7 @@ function sendMessage(message, gid, token) {
 					console.log(err);
 					console.log(body);
 				});
-			},
-			i * 500,
-			message[i]
-		);
+			}, i * 500, message[i]);
 	}
 }
 
@@ -273,10 +249,7 @@ function sendMention(message, uids, locations, gid, token) {
 					console.log(err);
 					console.log(body);
 				});
-			},
-			i * 500,
-			message[i]
-		);
+			}, i * 500, message[i]);
 	}
 }
 
@@ -308,9 +281,80 @@ function sendDM(message, uid, token) {
 					console.log(err);
 					console.log(body);
 				});
-			},
-			i * 500,
-			message[i]
-		);
+			}, i * 500, message[i]);
 	}
+}
+
+/**
+ * Removes a user from a group
+ * @param {string} id - The global userid of the user being removed
+ * @param {function} callback - The handler once the user is removed
+ * @param {string} gid - The group from which the user is to be removed
+ * @param {string} token - The token of the specific instance of BORG used to generate the request
+ */
+function kick(id, callback, gid, token) {
+	getMID(id, (mid) => {
+		const options = {
+			url: 'https://api.groupme.com/v3/groups/' + gid + '/members/' + id + '/remove?token=' + token,
+			method: 'POST',
+			json: true,
+			body: {}
+		};
+		request(options, function(err, resp, body) {
+			if(callback) callback(JSON.parse(body).response);
+		});
+	}, gid, token);
+}
+
+/**
+ * Adds a user to a group
+ * @param {string} uid - The global userid of the user being added
+ * @param {string?} name - The name with which to add the user
+ * @param {function} callback - The handler once the user is added
+ * @param {string} gid - The group from which the user is to be added
+ * @param {string} token - The token of the specific instance of BORG used to generate the request
+ */
+function add(uid, name, callback, gid, token) {
+	const options = {
+		url: 'https://api.groupme.com/v3/groups/' + gid + '/members/' + members[i].id + '/remove?token=' + token,
+		method: 'POST'
+	};
+	request(options, function(err, resp, body) {
+		console.log(err);
+		console.log(body);
+		let b;
+		if(name === "") b = {
+			members: [{
+				user_id: uid
+			}]
+		};
+		else b = {
+			members: [{
+				nickname: name,
+				user_id: uid
+			}]
+		};
+		const options = {
+			url: 'https://api.groupme.com/v3/groups/' + gid + '/members/add?token=' + token,
+			method: 'POST',
+			json: true,
+			body: b
+		};
+		request(options, function(err, resp, body) {
+			if(callback) callback(JSON.parse(body).response);
+		});
+	});
+}
+
+/**
+ * Forcefully rename a user
+ * @param {string} uid - The global userid of the user being renamed
+ * @param {string} name - The name to apply to the user
+ * @param {string} gid - The group in which the user is to be renamed
+ * @param {string} token - The token of the specific instance of BORG used to generate the request
+ */
+function nick(uid, name, gid, token) {
+	kick(uid, () => {
+		add(uid, name, null, gid, token);
+	}, gid, token);
 }
