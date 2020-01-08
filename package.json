@@ -1,33 +1,37 @@
 {
-  "name": "BORG",
-  "version": "0.0.0",
-  "description": "Better Overwatch Robot for Groupme, a FLOSS alternative to GORT, which overcomes its limited featureset and closed-source freemium model",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "https": "^1.0.0",
-    "request": "^2.88.0"
-  },
-  "engines": {
-    "node": "0.10.x"
-  },
-  "keywords": [
-    "groupme",
-    "node",
-    "gort",
-    "borg",
-    "bot",
-    "robot",
-    "admin",
-    "mod",
-    "moderation",
-    "administration",
-    "moderator",
-    "administrator"
-  ],
-  "license": "MIT"
+	"name": "borg",
+	"version": "0.0.0",
+	"description": "Better Overwatch Robot for Groupme, a FLOSS alternative to GORT, which overcomes its limited featureset and closed-source freemium model",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1",
+		"https": "^1.0.0",
+		"request": "^2.88.0"
+	},
+	"engines": {
+		"node": "0.10.x"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BORG-Groupme/BORG.git"
+	},
+	"keywords": [
+		"groupme",
+		"node",
+		"gort",
+		"borg",
+		"bot",
+		"robot",
+		"admin",
+		"mod",
+		"moderation",
+		"administration",
+		"moderator",
+		"administrator"
+	],
+	"license": "MIT"
 }
