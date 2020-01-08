@@ -1,1 +1,4 @@
 /node_modules/
+# Vim files
+*.vim
+*.swp
