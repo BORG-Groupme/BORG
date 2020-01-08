@@ -6,7 +6,53 @@ function generateGUID(chars) {
   return Math.floor(Math.random() * Math.pow(10, chars)) + "";
 }
 
-function getMember(group, member, token) {
+function getMID(uid, callback, gid, token) {
+  var optns = {
+    url: 'https://api.groupme.com/v3/groups/"+gid+"?token='+token,
+    method: 'GET'
+  };
+  request(optns, function(err, resp, body) {
+    console.log(err);
+    console.log(body);
+    members = JSON.parse(body).response.members;
+    for(var i = 0; i < members.length; i++) {
+      if(members[i].user_id == uid) {
+        callback(members[i].id);
+      }
+    }
+  });
+}
+
+function checkPoll(pid, callback, gid, token) {
+    var options = {
+      url: 'https://api.groupme.com/v3/poll/'+gid+'/'+pid+'?token='+token,
+      method: 'GET'
+    };
+    request(options, function(err, resp, body) {
+      console.log(err);
+      console.log(JSON.stringify(body));
+      if(JSON.parse(body).response.poll.data.status == 'past') {
+        callback(JSON.parse(body).response.poll.data.options);
+      }
+    });
+  }
+}
+
+function kick(id, callback, gid, token) {
+  getMID(id, (mid) => {
+    var options = {
+      url: 'https://api.groupme.com/v3/groups/'+gid+'/members/'+id+'/remove?token='+token,
+      method: 'POST',
+      json: true,
+      body: {}
+    };
+    request(options, function(err, resp, body) {
+      callback();
+    });
+  }, gid, token);
+}
+
+function getMember(group, member, callback, token) {
   let optns = {
     url:
       "https://api.groupme.com/v3/groups/" +
@@ -21,10 +67,10 @@ function getMember(group, member, token) {
     for (let i = 0; i < mem.length; i++) {
       if(member.test(mem[i].nickname) || member.test(mem[i].name)) out += mem[i].nickname + "=" + mem[i].name + ": " + mem[i].user_id + "\n";
     }
-    //return "out" when i get around to making these promises
+    callback(out);
   });
 }
-function getGroup(group, token) {
+function getGroup(group, callback, token) {
   let optns = {
     url:
       "https://api.groupme.com/v3/groups?omit=memberships&per_page=100&token=" +
@@ -37,7 +83,7 @@ function getGroup(group, token) {
     for (let i = 0; i < groups.length; i++) {
       if(group.test(groups[i].name)) out += groups[i].name + ": " + groups[i].group_id + "\n";
     }
-    //return "out" when i get around to making these promises
+    callback(out);
   });
 }
 function mentionEveryone(message, gid, token) {
