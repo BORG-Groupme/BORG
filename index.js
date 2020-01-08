@@ -1,6 +1,6 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
+let express = require("express");
+let bodyParser = require("body-parser");
+let app = express();
 app.use(bodyParser.json());
 
 app.post("/", function(req, resp) {
