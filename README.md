@@ -3,25 +3,25 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
 
 # GORT Features Reimplemented
 
-* [ ] User permissions/roles ([#2] #18)
+* [ ] User permissions/roles ([#2] [#18])
   * Allows users to have different permission levels.
   * GORT only has regular user, trusted user, admin, and co-owner with preset permissions
   * BORG allows for a fully modular permission system and custom roles
-* [ ] Remote console (#2 #16)
+* [ ] Remote console ([#2] [#16])
   * Allows management without flooding the chatroom with commands
-* [ ] Security levels (#17)
+* [ ] Security levels ([#17])
   * 0: sleeping, doesn't respond to any restricted actions
   * 1: undo unauthorized changes
   * 2: same as 1 *AND* warn offender
   * 3: same as 1 *AND* kick offender without warning
-* [ ] Group settings management (#2 #16)
+* [ ] Group settings management ([#2] [#16])
   * Manages these settings (in addition to the ones listed under restricted actions):
     * toggle share link
     * toggle closed status
-* [ ] Group settings protection (#20)
+* [ ] Group settings protection ([#20])
   * Prevents users from editing things like name, topic, and avatar by automatically reverting any changes
   * Optionally may issue warnings or kick offenders
-* [ ] Restrict user actions (#2 #20)
+* [ ] Restrict user actions ([#2] [#20])
   * The following actions are able to be restricted/allowed:
     * change group name
     * change group topic
@@ -33,42 +33,42 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
     * join group through share link
     * rejoin through built-in GroupMe feature
     * chat
-* [ ] Auto-kick (#21)
+* [ ] Auto-kick ([#21])
   * Users who repeatedly break rules will be kicked
-* [ ] Mass kick/re-add (#3)
+* [ ] Mass kick/re-add ([#3])
   * Allows kicking and re-adding in batches based on
     * is kicked by user (re-add)
     * is a regular user (kick)
     * is added by user (kick)
     * is inactive (kick)
     * is new (kick)
-* [ ] Reputation (#7 #21)
+* [ ] Reputation ([#7] [#21])
   * Keeps track of a user's reputation to help tag spammers
   * Allows for setting a minimum reputation limit to join
-* [ ] Ban users (#4)
+* [ ] Ban users ([#4])
   * Prevents a user from being added, joining with share link, and joining with the built-in rejoin feature
   * Lifting a band lifts the above restrictions
   * Banning a user in one chatroom bans them from all that are under the same ownership (optional)
-* [ ] Anti-bot (#6)
+* [ ] Anti-bot ([#6])
   * Kick and ban user who attempted to install a bot
     * GroupMe automatically disables bots whose owner is kicked
-* [ ] Room migration (#22)
+* [ ] Room migration ([#22])
   * Attempt to add all users from one chatroom into another
-* [ ] Migration protection (#57)
+* [ ] Migration protection ([#22])
   * Prevents the users from a chatroom from being migrated
 <!-- NOTE: This may just be a GORT thing, not a GroupMe thing
 * [ ] Anti-ghost
   * Prevents users from exploiting the GroupMe Ghost Rejoin vulnerability
 -->
-* [ ] Room full alert (#9)
+* [ ] Room full alert ([#9])
   * Notifies admins when the chatroom is at max capacity
-* [ ] Mass alert (#9 #10)
+* [ ] Mass alert ([#9] [#10])
   * Alert everyone using a single message
   * Alert everyone in a specific role using a single message
   * Alert for calendar events
-* [ ] Profanity filter (#11)
+* [ ] Profanity filter ([#11])
   * Warn users for detected swears (in English)
-* [ ] Content filter (#12)
+* [ ] Content filter ([#12])
   * Restricts posting:
     * images
     * videos
@@ -77,21 +77,41 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
     * polls
     * uploaded files
     * emojis
-* [ ] Greeting (#5)
+* [ ] Greeting ([#5])
   * Greets incoming users with a custom message
   * Variables:
     * $U - replaced with username
     * $G - replaced with group name
-* [ ] Activity tracking (#23)
+* [ ] Activity tracking ([#23])
   * Keeps track of things such as when user first joined, when user last joined, and when user was last seen
-* [ ] User queries (#8)
+* [ ] User queries ([#8])
   * List users who fall under a specific role
   * List list departed, kicked, banned, and inactive users
   * List users added by a specific user
   * Whois
-* [ ] Custom commands (#14 #15)
+* [ ] Custom commands ([#14] [#15])
   * Custom replies for a certain trigger
-* [ ] Task scheduler (#13 #14)
+* [ ] Task scheduler ([#13] [#14])
   * Sends messages and alerts triggered by a time event (timer or date)
 
-[#2]: https://github.com/BORG-Groupme/BORG/issues/2 "Issue #2"
+[#2]:  https://github.com/BORG-Groupme/BORG/issues/2  "Issue #2"
+[#3]:  https://github.com/BORG-Groupme/BORG/issues/3  "Issue #3"
+[#4]:  https://github.com/BORG-Groupme/BORG/issues/4  "Issue #4"
+[#5]:  https://github.com/BORG-Groupme/BORG/issues/5  "Issue #5"
+[#6]:  https://github.com/BORG-Groupme/BORG/issues/6  "Issue #6"
+[#7]:  https://github.com/BORG-Groupme/BORG/issues/7  "Issue #7"
+[#8]:  https://github.com/BORG-Groupme/BORG/issues/8  "Issue #8"
+[#9]:  https://github.com/BORG-Groupme/BORG/issues/9  "Issue #9"
+[#10]: https://github.com/BORG-Groupme/BORG/issues/10 "Issue #10"
+[#11]: https://github.com/BORG-Groupme/BORG/issues/11 "Issue #11"
+[#12]: https://github.com/BORG-Groupme/BORG/issues/12 "Issue #12"
+[#13]: https://github.com/BORG-Groupme/BORG/issues/13 "Issue #13"
+[#14]: https://github.com/BORG-Groupme/BORG/issues/14 "Issue #14"
+[#15]: https://github.com/BORG-Groupme/BORG/issues/15 "Issue #15"
+[#16]: https://github.com/BORG-Groupme/BORG/issues/16 "Issue #16"
+[#17]: https://github.com/BORG-Groupme/BORG/issues/17 "Issue #17"
+[#18]: https://github.com/BORG-Groupme/BORG/issues/18 "Issue #18"
+[#20]: https://github.com/BORG-Groupme/BORG/issues/20 "Issue #20"
+[#21]: https://github.com/BORG-Groupme/BORG/issues/21 "Issue #21"
+[#22]: https://github.com/BORG-Groupme/BORG/issues/22 "Issue #22"
+[#23]: https://github.com/BORG-Groupme/BORG/issues/23 "Issue #23"
