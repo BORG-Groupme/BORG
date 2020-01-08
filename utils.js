@@ -1,4 +1,15 @@
 //misc helper functions
+var fs = require("fs");
+
+function getData(callback, file) {
+  fs.readFile(__dirname + "/" + file + ".json", function(err, d) {
+    callback(JSON.parse(d));
+  });
+}
+function saveData(data, file) {
+  fs.writeFileSync(__dirname + "/" + file + ".json", JSON.stringify(data, null, "\t"));
+}
+
 function charSplit(string, charmax, charbreak) {
   string = string.split(charbreak);
   var starr = [""];
@@ -35,5 +46,7 @@ function replaceAll(str, search, replacement)  {
 module.exports = {
   charSplit: charSplit,
   shuffle: shuffle,
-  replaceAll: replaceAll
+  replaceAll: replaceAll,
+  getData: getData,
+  saveData: saveData
 }
