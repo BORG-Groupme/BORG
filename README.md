@@ -9,11 +9,12 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
   * BORG allows for a fully modular permission system and custom roles
 * [ ] Remote console ([#2] [#16])
   * Allows management without flooding the chatroom with commands
-* [ ] Security levels ([#17])
+* [ ] Security levels ([#2])
   * 0: sleeping, doesn't respond to any restricted actions
   * 1: undo unauthorized changes
   * 2: same as 1 *AND* warn offender
   * 3: same as 1 *AND* kick offender without warning
+  * BORG allows these to be assigned per-offense and per-role, and to set a default
 * [ ] Group settings management ([#2] [#16])
   * Manages these settings (in addition to the ones listed under restricted actions):
     * toggle share link
@@ -57,6 +58,7 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
 * [ ] Migration protection ([#22])
   * Prevents the users from a chatroom from being migrated
 <!-- NOTE: This may just be a GORT thing, not a GroupMe thing
+         it is, and implementing it is far too much of a bother
 * [ ] Anti-ghost
   * Prevents users from exploiting the GroupMe Ghost Rejoin vulnerability
 -->
@@ -93,7 +95,18 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
   * Custom replies for a certain trigger
 * [ ] Task scheduler ([#13] [#14])
   * Sends messages and alerts triggered by a time event (timer or date)
+* [ ] Messaging Level settings ([#17])
+  * Controls "chattiness" in response to certain events 
+    * high: all responses are enabled
+    * med: all messages except join events are enabled
+    * low: warnings for restricted actions/bot actions such as kick are disabled
+    * none: no messages will be sent
+  * BORG will allow all messages to be individually enabled/disabled, as well as presets which mass-set message levels
 
+gort msglevel high: All messages are enabled (default)
+gort msglevel med: Disables all messages related to join events ("bad rep", "banned user", "joining is not allowed", etc.
+gort msglevel low: Additionally, disables warnings on restricted user actions (changing group settings, kicking users, etc.)
+gort msglevel none: Disables ALL messages including profanity filter and content filter warnings (not recommended).
 [#2]:  https://github.com/BORG-Groupme/BORG/issues/2  "Issue #2"
 [#3]:  https://github.com/BORG-Groupme/BORG/issues/3  "Issue #3"
 [#4]:  https://github.com/BORG-Groupme/BORG/issues/4  "Issue #4"
