@@ -103,10 +103,6 @@ Better Overwatch Robot for Groupme, a drop-in FLOSS alternative to [GORT](https:
     * none: no messages will be sent
   * BORG will allow all messages to be individually enabled/disabled, as well as presets which mass-set message levels
 
-gort msglevel high: All messages are enabled (default)
-gort msglevel med: Disables all messages related to join events ("bad rep", "banned user", "joining is not allowed", etc.
-gort msglevel low: Additionally, disables warnings on restricted user actions (changing group settings, kicking users, etc.)
-gort msglevel none: Disables ALL messages including profanity filter and content filter warnings (not recommended).
 [#2]:  https://github.com/BORG-Groupme/BORG/issues/2  "Issue #2"
 [#3]:  https://github.com/BORG-Groupme/BORG/issues/3  "Issue #3"
 [#4]:  https://github.com/BORG-Groupme/BORG/issues/4  "Issue #4"
