@@ -2,3 +2,6 @@
 # Vim files
 *.vim
 *.swp
+
+# IDE stuff
+.idea/
